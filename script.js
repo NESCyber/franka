@@ -16,12 +16,21 @@ document.addEventListener('DOMContentLoaded', () => {
   if (menuToggle) {
     menuToggle.addEventListener('click', () => {
       navLinksContainer.classList.toggle('mobile-open');
+      menuToggle.classList.toggle('open');
+      if (navLinksContainer.classList.contains('mobile-open')) {
+        document.body.style.overflow = 'hidden';
+      } else {
+        document.body.style.overflow = '';
+      }
     });
   }
 
   navLinks.forEach(link => {
     link.addEventListener('click', (e) => {
       navLinksContainer.classList.remove('mobile-open');
+      if (menuToggle) menuToggle.classList.remove('open');
+      document.body.style.overflow = '';
+
       const targetId = link.getAttribute('href');
       if (targetId.startsWith('#')) {
         e.preventDefault();
@@ -66,7 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     const particles = [];
-    const particleCount = Math.min(width < 768 ? 25 : 50, 60);
+    const particleCount = Math.min(width < 768 ? 20 : 45, 50);
     const colors = ['rgba(232, 165, 184, ', 'rgba(245, 215, 127, ', 'rgba(255, 255, 255, '];
 
     class Particle {
@@ -77,7 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
       reset() {
         this.x = Math.random() * width;
         this.y = Math.random() * height;
-        this.size = Math.random() * 3 + 1;
+        this.size = Math.random() * 2.5 + 1;
         this.colorPrefix = colors[Math.floor(Math.random() * colors.length)];
         this.alpha = Math.random() * 0.5 + 0.1;
         this.speedY = -(Math.random() * 0.4 + 0.1);
@@ -100,7 +109,7 @@ document.addEventListener('DOMContentLoaded', () => {
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
         ctx.fillStyle = this.colorPrefix + Math.max(0, Math.min(1, this.alpha)) + ')';
-        ctx.shadowBlur = 10;
+        ctx.shadowBlur = 8;
         ctx.shadowColor = this.colorPrefix + '0.8)';
         ctx.fill();
         ctx.shadowBlur = 0;
@@ -227,8 +236,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (lightboxModal) {
     lightboxModal.addEventListener('click', (e) => {
-      if (e.target === lightboxModal) closeLightbox();
+      if (e.target === lightboxModal || e.target.classList.contains('lightbox-content')) {
+        closeLightbox();
+      }
     });
+  }
+
+  let touchStartX = 0;
+  let touchEndX = 0;
+  if (lightboxModal) {
+    lightboxModal.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    lightboxModal.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      if (touchEndX < touchStartX - 40) nextImage();
+      if (touchEndX > touchStartX + 40) prevImage();
+    }, { passive: true });
   }
 
   document.addEventListener('keydown', (e) => {
@@ -269,6 +294,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const tiltCards = document.querySelectorAll('.tilt-effect');
   tiltCards.forEach(card => {
     card.addEventListener('mousemove', (e) => {
+      if (window.innerWidth < 768) return;
       const rect = card.getBoundingClientRect();
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
