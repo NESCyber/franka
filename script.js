@@ -177,6 +177,29 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   initCountdown();
 
+  const envelopeSealed = document.getElementById('envelope-sealed');
+  const letterUnfolded = document.getElementById('letter-unfolded');
+  const btnOpenEnvelope = document.getElementById('btn-open-envelope');
+  const waxSealBtn = document.getElementById('wax-seal-btn');
+
+  function openEnvelope() {
+    if (envelopeSealed && letterUnfolded) {
+      envelopeSealed.classList.add('opened');
+      letterUnfolded.classList.add('letter-visible');
+      if (typeof createConfettiBurst === 'function') {
+        createConfettiBurst(60);
+      }
+    }
+  }
+
+  if (btnOpenEnvelope) btnOpenEnvelope.addEventListener('click', openEnvelope);
+  if (waxSealBtn) waxSealBtn.addEventListener('click', openEnvelope);
+  if (envelopeSealed) envelopeSealed.addEventListener('click', (e) => {
+    if (!e.target.closest('#btn-copy-letter')) {
+      openEnvelope();
+    }
+  });
+
   const galleryItems = document.querySelectorAll('.gallery-item');
   const lightboxModal = document.getElementById('lightbox-modal');
   const lightboxImg = document.getElementById('lightbox-img');
@@ -338,6 +361,8 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   const confettiCanvas = document.getElementById('confetti-canvas');
+  let createConfettiBurst = function() {};
+
   if (confettiCanvas) {
     const cctx = confettiCanvas.getContext('2d');
     let cw = (confettiCanvas.width = confettiCanvas.parentElement.clientWidth);
@@ -352,7 +377,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const confettiPieces = [];
     const colors = ['#f5d77f', '#e8a5b8', '#ffffff', '#ffd166', '#ef476f', '#06d6a0'];
 
-    function createConfettiBurst(count = 80) {
+    createConfettiBurst = function(count = 80) {
       for (let i = 0; i < count; i++) {
         confettiPieces.push({
           x: cw / 2 + (Math.random() - 0.5) * 100,
@@ -367,7 +392,7 @@ document.addEventListener('DOMContentLoaded', () => {
           opacity: 1
         });
       }
-    }
+    };
 
     function animateConfetti() {
       cctx.clearRect(0, 0, cw, ch);

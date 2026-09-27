@@ -51,6 +51,8 @@
   </header>
 
   <audio id="bg-music" loop preload="auto">
+    <source src="assets/Wendy Shay.m4a" type="audio/mp4">
+    <source src="assets/birthday-song.m4a" type="audio/mp4">
     <source src="assets/birthday-song.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
   </audio>
@@ -120,51 +122,67 @@
           <div class="section-divider"></div>
         </div>
 
-        <div class="letter-wrapper">
-          <div class="letter-card glow-card">
-            <div class="letter-header">
-              <div class="wax-seal">
+        <div class="envelope-container text-center">
+          <div id="envelope-sealed" class="envelope-card glass-card glow-card">
+            <div class="envelope-top-flap"></div>
+            <div class="envelope-inner-content">
+              <div class="wax-seal pulse-seal" id="wax-seal-btn">
                 <span class="wax-symbol">F</span>
               </div>
-              <div class="letter-date">October 1st</div>
-            </div>
-
-            <div class="letter-body">
-              <p class="letter-salutation">Happy Birthday, Franka ❤️</p>
-
-              <p class="letter-paragraph">
-                It’s funny how some people become part of your story in ways you never really planned.
-              </p>
-
-              <p class="letter-paragraph">
-                I still remember the first time I saw you during our freshers’ orientation. A lot has happened since then. From being strangers to eventually becoming genuinely close friends, we have shared conversations, laughed together, created memories, and gotten to know each other in ways I never expected that first day.
-              </p>
-
-              <p class="letter-paragraph">
-                Life changes, people grow, and sometimes the journey takes unexpected turns. But regardless of where life takes us, I’m grateful that I got the chance to know you and have you as a friend.
-              </p>
-
-              <p class="letter-paragraph">
-                On your birthday, I just want you to know that I genuinely wish you well. I hope this new chapter brings you peace, happiness, growth, good health, and opportunities that make you proud of yourself.
-              </p>
-
-              <p class="letter-paragraph letter-emph">
-                Keep being yourself. Keep growing. Keep chasing the things that matter to you.
-              </p>
-
-              <p class="letter-paragraph letter-closing">
-                Happy Birthday once again, Franka. 🎂❤️
-              </p>
-
-              <p class="letter-footer-note">
-                May October 1st mark the beginning of a beautiful year for you.
-              </p>
-            </div>
-
-            <div class="letter-actions">
-              <button id="btn-copy-letter" class="btn btn-outline btn-sm">
-                <span>📋 Copy Letter</span>
+              <h3 class="envelope-title">For Franka ❤️</h3>
+              <p class="envelope-subtitle">October 1st • A Personal Birthday Note</p>
+              <button class="btn btn-primary btn-open-letter" id="btn-open-envelope">
+                <span>💌 Click to Unseal & Read</span>
               </button>
+            </div>
+          </div>
+
+          <div id="letter-unfolded" class="letter-wrapper letter-hidden">
+            <div class="letter-card glow-card">
+              <div class="letter-header">
+                <div class="wax-seal">
+                  <span class="wax-symbol">F</span>
+                </div>
+                <div class="letter-date">October 1st</div>
+              </div>
+
+              <div class="letter-body">
+                <p class="letter-salutation">Happy Birthday, Franka ❤️</p>
+
+                <p class="letter-paragraph">
+                  It’s funny how some people become part of your story in ways you never really planned.
+                </p>
+
+                <p class="letter-paragraph">
+                  I still remember the first time I saw you during our freshers’ orientation. A lot has happened since then. From being strangers to eventually becoming genuinely close friends, we have shared conversations, laughed together, created memories, and gotten to know each other in ways I never expected that first day.
+                </p>
+
+                <p class="letter-paragraph">
+                  Life changes, people grow, and sometimes the journey takes unexpected turns. But regardless of where life takes us, I’m grateful that I got the chance to know you and have you as a friend.
+                </p>
+
+                <p class="letter-paragraph">
+                  On your birthday, I just want you to know that I genuinely wish you well. I hope this new chapter brings you peace, happiness, growth, good health, and opportunities that make you proud of yourself.
+                </p>
+
+                <p class="letter-paragraph letter-emph">
+                  Keep being yourself. Keep growing. Keep chasing the things that matter to you.
+                </p>
+
+                <p class="letter-paragraph letter-closing">
+                  Happy Birthday once again, Franka. 🎂❤️
+                </p>
+
+                <p class="letter-footer-note">
+                  May October 1st mark the beginning of a beautiful year for you.
+                </p>
+              </div>
+
+              <div class="letter-actions">
+                <button id="btn-copy-letter" class="btn btn-outline btn-sm">
+                  <span>📋 Copy Letter</span>
+                </button>
+              </div>
             </div>
           </div>
         </div>
