@@ -32,16 +32,6 @@
       </nav>
 
       <div class="nav-actions">
-        <button id="music-toggle" class="btn-music" aria-label="Toggle background music">
-          <span class="music-icon" id="music-icon">♪</span>
-          <span class="music-label" id="music-label">Play</span>
-          <div class="eq-bars" id="eq-bars">
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
-          </div>
-        </button>
-
         <button id="menu-toggle" class="btn-menu" aria-label="Toggle navigation menu">
           <span></span>
           <span></span>
@@ -51,7 +41,7 @@
     </div>
   </header>
 
-  <audio id="bg-music" autoplay loop preload="auto">
+  <audio id="bg-music" loop preload="auto">
     <source src="assets/Wendy Shay.m4a" type="audio/mp4">
     <source src="assets/birthday-song.m4a" type="audio/mp4">
     <source src="assets/birthday-song.mp3" type="audio/mpeg">
@@ -188,7 +178,6 @@
           </div>
         </div>
 
-        <!-- Voice Note Player Card -->
         <div class="voice-note-card glass-card" style="margin-top: 40px;">
           <div class="voice-note-header">
             <div class="voice-note-avatar">
@@ -326,7 +315,6 @@
       </div>
     </section>
 
-    <!-- Make a Wish Candle Blowout Section -->
     <section id="wish" class="section candle-wish-section text-center">
       <div class="container">
         <div class="section-header text-center">
@@ -469,6 +457,26 @@
       </div>
     </section>
   </main>
+
+  <!-- Floating Bottom Music Player Bar -->
+  <div id="floating-music-bar" class="floating-music-bar glass-card">
+    <div class="music-info">
+      <span class="music-note-icon">🎵</span>
+      <div class="music-text">
+        <span class="music-title">Birthday Song</span>
+        <span class="music-sub">Tap to play background song</span>
+      </div>
+    </div>
+    <button id="music-toggle" class="btn-music btn-music-bar" aria-label="Toggle background music">
+      <span class="music-icon" id="music-icon">♪</span>
+      <span class="music-label" id="music-label">Play Song</span>
+      <div class="eq-bars" id="eq-bars">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+    </button>
+  </div>
 
   <footer class="site-footer">
     <div class="container text-center">

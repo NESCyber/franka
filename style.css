@@ -55,6 +55,7 @@ body {
   overflow-x: hidden;
   position: relative;
   -webkit-font-smoothing: antialiased;
+  padding-bottom: 70px;
 }
 
 ::-webkit-scrollbar {
@@ -333,31 +334,79 @@ h1, h2, h3, h4 {
   gap: 12px;
 }
 
+/* Floating Bottom Music Bar */
+.floating-music-bar {
+  position: fixed;
+  bottom: 20px;
+  right: 25px;
+  z-index: 1050;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px 20px;
+  background: rgba(26, 11, 23, 0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1.5px solid rgba(245, 215, 127, 0.35);
+  border-radius: var(--radius-full);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 25px rgba(245, 215, 127, 0.15);
+  transition: all var(--transition-smooth);
+}
+
+.music-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.music-note-icon {
+  font-size: 1.2rem;
+}
+
+.music-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.music-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--accent-gold);
+}
+
+.music-sub {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+.btn-music-bar {
+  padding: 8px 18px;
+  font-size: 0.85rem;
+  background: var(--gold-gradient);
+  color: #120710;
+  font-weight: 700;
+  border: none;
+}
+
+.btn-music-bar:hover {
+  transform: scale(1.05);
+}
+
 .btn-music {
   display: flex;
   align-items: center;
   gap: 6px;
-  background: rgba(232, 165, 184, 0.12);
-  border: 1px solid rgba(232, 165, 184, 0.25);
-  color: var(--text-main);
-  padding: 6px 14px;
   border-radius: var(--radius-full);
   cursor: pointer;
   font-family: var(--font-sans);
-  font-size: 0.8rem;
-  font-weight: 600;
   transition: all var(--transition-fast);
   touch-action: manipulation;
 }
 
-.btn-music:hover {
-  background: rgba(232, 165, 184, 0.25);
-  border-color: var(--primary-rose);
-}
-
 .btn-music.playing {
-  background: rgba(245, 215, 127, 0.15);
-  border-color: var(--accent-gold);
+  background: rgba(245, 215, 127, 0.2);
+  border: 1px solid var(--accent-gold);
   color: var(--accent-gold);
 }
 
@@ -371,7 +420,7 @@ h1, h2, h3, h4 {
 .eq-bars .bar {
   width: 2.5px;
   height: 3px;
-  background: var(--text-muted);
+  background: #120710;
   border-radius: 1px;
 }
 
@@ -791,7 +840,6 @@ h1, h2, h3, h4 {
   justify-content: flex-end;
 }
 
-/* ==================== VOICE NOTE PLAYER CARD ==================== */
 .voice-note-card {
   max-width: 600px;
   margin: 0 auto;
@@ -897,7 +945,6 @@ h1, h2, h3, h4 {
   margin-top: 6px;
 }
 
-/* ==================== CANDLE BLOWOUT SECTION ==================== */
 .candle-card {
   max-width: 580px;
   margin: 0 auto;
@@ -1466,6 +1513,30 @@ h1, h2, h3, h4 {
 @media (max-width: 768px) {
   .section {
     padding: 60px 0;
+  }
+
+  .floating-music-bar {
+    bottom: 12px;
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+    width: 92%;
+    max-width: 420px;
+    padding: 10px 14px;
+    gap: 10px;
+  }
+
+  .music-title {
+    font-size: 0.8rem;
+  }
+
+  .music-sub {
+    font-size: 0.68rem;
+  }
+
+  .btn-music-bar {
+    padding: 6px 14px;
+    font-size: 0.78rem;
   }
 
   .nav-links {

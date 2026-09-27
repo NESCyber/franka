@@ -255,7 +255,6 @@ document.addEventListener('DOMContentLoaded', () => {
           isVoicePlaying = true;
         }).catch(err => {
           console.log('Voice note play error:', err);
-          alert('Note: To record or add your own voice message, add franka-voice-note.mp3 to the assets folder!');
         });
       }
     });
@@ -381,36 +380,21 @@ document.addEventListener('DOMContentLoaded', () => {
       if (isPlaying) return;
       bgMusic.play().then(() => {
         musicToggle.classList.add('playing');
-        musicLabel.textContent = 'Pause';
-        musicIcon.textContent = 'Ⅱ';
+        if (musicLabel) musicLabel.textContent = 'Pause Song';
+        if (musicIcon) musicIcon.textContent = 'Ⅱ';
         isPlaying = true;
       }).catch(err => {
-        console.log('Autoplay waiting for user interaction:', err);
+        console.log('Audio playback error:', err);
       });
     }
 
     function stopAudio() {
       bgMusic.pause();
       musicToggle.classList.remove('playing');
-      musicLabel.textContent = 'Play';
-      musicIcon.textContent = '♪';
+      if (musicLabel) musicLabel.textContent = 'Play Song';
+      if (musicIcon) musicIcon.textContent = '♪';
       isPlaying = false;
     }
-
-    startAudio();
-
-    const handleFirstInteraction = () => {
-      if (!isPlaying) {
-        startAudio();
-      }
-      document.removeEventListener('click', handleFirstInteraction);
-      document.removeEventListener('touchstart', handleFirstInteraction);
-      document.removeEventListener('scroll', handleFirstInteraction);
-    };
-
-    document.addEventListener('click', handleFirstInteraction, { once: true });
-    document.addEventListener('touchstart', handleFirstInteraction, { once: true });
-    document.addEventListener('scroll', handleFirstInteraction, { once: true });
 
     musicToggle.addEventListener('click', (e) => {
       e.stopPropagation();
