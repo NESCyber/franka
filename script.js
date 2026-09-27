@@ -294,22 +294,47 @@ document.addEventListener('DOMContentLoaded', () => {
   if (musicToggle && bgMusic) {
     let isPlaying = false;
 
-    musicToggle.addEventListener('click', () => {
+    function startAudio() {
+      if (isPlaying) return;
+      bgMusic.play().then(() => {
+        musicToggle.classList.add('playing');
+        musicLabel.textContent = 'Pause';
+        musicIcon.textContent = 'Ⅱ';
+        isPlaying = true;
+      }).catch(err => {
+        console.log('Autoplay waiting for user interaction:', err);
+      });
+    }
+
+    function stopAudio() {
+      bgMusic.pause();
+      musicToggle.classList.remove('playing');
+      musicLabel.textContent = 'Play';
+      musicIcon.textContent = '♪';
+      isPlaying = false;
+    }
+
+    startAudio();
+
+    const handleFirstInteraction = () => {
+      if (!isPlaying) {
+        startAudio();
+      }
+      document.removeEventListener('click', handleFirstInteraction);
+      document.removeEventListener('touchstart', handleFirstInteraction);
+      document.removeEventListener('scroll', handleFirstInteraction);
+    };
+
+    document.addEventListener('click', handleFirstInteraction, { once: true });
+    document.addEventListener('touchstart', handleFirstInteraction, { once: true });
+    document.addEventListener('scroll', handleFirstInteraction, { once: true });
+
+    musicToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
       if (isPlaying) {
-        bgMusic.pause();
-        musicToggle.classList.remove('playing');
-        musicLabel.textContent = 'Play';
-        musicIcon.textContent = '♪';
-        isPlaying = false;
+        stopAudio();
       } else {
-        bgMusic.play().then(() => {
-          musicToggle.classList.add('playing');
-          musicLabel.textContent = 'Pause';
-          musicIcon.textContent = 'Ⅱ';
-          isPlaying = true;
-        }).catch(err => {
-          console.log('Audio playback permission error:', err);
-        });
+        startAudio();
       }
     });
   }
