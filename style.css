@@ -599,7 +599,6 @@ h1, h2, h3, h4 {
   100% { opacity: 0; top: 18px; }
 }
 
-/* ==================== ENVELOPE & LETTER SECTION ==================== */
 .envelope-container {
   max-width: 800px;
   margin: 0 auto;
@@ -790,6 +789,245 @@ h1, h2, h3, h4 {
   margin-top: 30px;
   display: flex;
   justify-content: flex-end;
+}
+
+/* ==================== VOICE NOTE PLAYER CARD ==================== */
+.voice-note-card {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 24px 30px;
+  border: 1px solid rgba(245, 215, 127, 0.25);
+  background: linear-gradient(145deg, rgba(38, 17, 32, 0.85), rgba(20, 8, 17, 0.9));
+}
+
+.voice-note-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.voice-note-avatar {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: rgba(245, 215, 127, 0.12);
+  border: 1px solid var(--accent-gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+}
+
+.voice-note-title {
+  font-size: 1.2rem;
+  color: var(--accent-gold);
+  font-family: var(--font-sans);
+  font-weight: 600;
+}
+
+.voice-note-sub {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.voice-note-player {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.btn-voice-toggle {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: var(--gold-gradient);
+  color: #120710;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  font-weight: 700;
+  box-shadow: 0 4px 15px rgba(245, 215, 127, 0.4);
+  transition: all var(--transition-fast);
+}
+
+.btn-voice-toggle:hover {
+  transform: scale(1.08);
+}
+
+.waveform-container {
+  flex: 1;
+}
+
+.waveform-bars {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  height: 28px;
+}
+
+.wave-bar {
+  flex: 1;
+  height: 8px;
+  background: rgba(232, 165, 184, 0.25);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+.voice-note-card.playing .wave-bar {
+  background: var(--accent-gold);
+  animation: waveBarAnim 1s ease-in-out infinite alternate;
+}
+
+.voice-note-card.playing .wave-bar:nth-child(2n) { animation-delay: 0.15s; }
+.voice-note-card.playing .wave-bar:nth-child(3n) { animation-delay: 0.3s; }
+.voice-note-card.playing .wave-bar:nth-child(4n) { animation-delay: 0.45s; }
+
+@keyframes waveBarAnim {
+  0% { height: 6px; }
+  100% { height: 26px; }
+}
+
+.voice-time-display {
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  margin-top: 6px;
+}
+
+/* ==================== CANDLE BLOWOUT SECTION ==================== */
+.candle-card {
+  max-width: 580px;
+  margin: 0 auto;
+  padding: 45px 35px;
+  position: relative;
+}
+
+.cake-illustration {
+  margin: 0 auto 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.candle-container {
+  position: relative;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.flame {
+  width: 20px;
+  height: 32px;
+  background: radial-gradient(ellipse at bottom, #fff 0%, #ffbe3b 40%, #ff4500 80%, transparent 100%);
+  border-radius: 50% 50% 35% 35%;
+  margin: 0 auto -4px;
+  box-shadow: 0 0 20px #ffbe3b, 0 0 40px #ff4500;
+  animation: flameFlicker 1.2s ease-in-out infinite alternate;
+  transition: all 0.5s ease;
+}
+
+.flame.extinguished {
+  opacity: 0;
+  transform: scale(0.1);
+  box-shadow: none;
+}
+
+@keyframes flameFlicker {
+  0% { transform: scale(1) rotate(-2deg); }
+  50% { transform: scale(1.06) rotate(2deg); }
+  100% { transform: scale(0.95) rotate(-1deg); }
+}
+
+.smoke {
+  width: 8px;
+  height: 20px;
+  background: rgba(200, 200, 200, 0.4);
+  border-radius: 10px;
+  margin: 0 auto;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+}
+
+.smoke.active {
+  opacity: 0.8;
+  animation: smokeRise 2s ease-out forwards;
+}
+
+@keyframes smokeRise {
+  0% { transform: translateY(0) scaleX(1); opacity: 0.8; }
+  100% { transform: translateY(-40px) scaleX(3); opacity: 0; }
+}
+
+.candle-stick {
+  width: 10px;
+  height: 45px;
+  background: linear-gradient(90deg, #f7d6e0, #e8a5b8, #f7d6e0);
+  border-radius: 4px;
+  margin: 0 auto;
+}
+
+.cake-top {
+  width: 140px;
+  height: 18px;
+  background: var(--gold-gradient);
+  border-radius: 12px 12px 0 0;
+}
+
+.cake-body {
+  width: 160px;
+  height: 55px;
+  background: linear-gradient(180deg, #3d1b38 0%, #200a1c 100%);
+  border: 1px solid rgba(232, 165, 184, 0.3);
+  border-radius: 0 0 16px 16px;
+}
+
+.candle-instruction {
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  color: var(--accent-gold);
+  margin-bottom: 20px;
+}
+
+.wish-reveal-box {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transform: translateY(20px);
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  padding: 0;
+  border-radius: var(--radius-md);
+  margin-top: 0;
+}
+
+.wish-reveal-box.active {
+  max-height: 400px;
+  opacity: 1;
+  transform: translateY(0);
+  padding: 25px 20px;
+  margin-top: 25px;
+  background: rgba(245, 215, 127, 0.08);
+  border: 1px solid rgba(245, 215, 127, 0.4);
+}
+
+.wish-icon {
+  font-size: 2.2rem;
+  margin-bottom: 10px;
+}
+
+.wish-title {
+  font-size: 1.6rem;
+  font-family: var(--font-serif);
+  margin-bottom: 10px;
+}
+
+.wish-desc {
+  color: var(--text-main);
+  font-size: 1.05rem;
+  line-height: 1.6;
 }
 
 .gallery-grid {

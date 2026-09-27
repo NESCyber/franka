@@ -200,6 +200,89 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  const btnVoicePlay = document.getElementById('btn-voice-play');
+  const voiceAudio = document.getElementById('voice-audio');
+  const voicePlayIcon = document.getElementById('voice-play-icon');
+  const voiceCard = document.querySelector('.voice-note-card');
+  const voiceCurrentTime = document.getElementById('voice-current-time');
+  const voiceTotalDuration = document.getElementById('voice-total-duration');
+
+  if (btnVoicePlay && voiceAudio) {
+    let isVoicePlaying = false;
+
+    function formatTime(seconds) {
+      const mins = Math.floor(seconds / 60);
+      const secs = Math.floor(seconds % 60);
+      return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+    }
+
+    voiceAudio.addEventListener('loadedmetadata', () => {
+      if (voiceTotalDuration && !isNaN(voiceAudio.duration)) {
+        voiceTotalDuration.textContent = formatTime(voiceAudio.duration);
+      }
+    });
+
+    voiceAudio.addEventListener('timeupdate', () => {
+      if (voiceCurrentTime) {
+        voiceCurrentTime.textContent = formatTime(voiceAudio.currentTime);
+      }
+    });
+
+    voiceAudio.addEventListener('ended', () => {
+      isVoicePlaying = false;
+      if (voicePlayIcon) voicePlayIcon.textContent = '▶';
+      if (voiceCard) voiceCard.classList.remove('playing');
+    });
+
+    btnVoicePlay.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const bgMusic = document.getElementById('bg-music');
+      if (bgMusic && !bgMusic.paused) {
+        bgMusic.pause();
+        const musicToggle = document.getElementById('music-toggle');
+        if (musicToggle) musicToggle.classList.remove('playing');
+      }
+
+      if (isVoicePlaying) {
+        voiceAudio.pause();
+        voicePlayIcon.textContent = '▶';
+        if (voiceCard) voiceCard.classList.remove('playing');
+        isVoicePlaying = false;
+      } else {
+        voiceAudio.play().then(() => {
+          voicePlayIcon.textContent = '⏸';
+          if (voiceCard) voiceCard.classList.add('playing');
+          isVoicePlaying = true;
+        }).catch(err => {
+          console.log('Voice note play error:', err);
+          alert('Note: To record or add your own voice message, add franka-voice-note.mp3 to the assets folder!');
+        });
+      }
+    });
+  }
+
+  const candleBtn = document.getElementById('candle-btn');
+  const btnBlowCandle = document.getElementById('btn-blow-candle');
+  const candleFlame = document.getElementById('candle-flame');
+  const candleSmoke = document.getElementById('candle-smoke');
+  const wishRevealBox = document.getElementById('wish-reveal-box');
+  const candleStatusText = document.getElementById('candle-status-text');
+
+  function blowOutCandle() {
+    if (candleFlame && !candleFlame.classList.contains('extinguished')) {
+      candleFlame.classList.add('extinguished');
+      if (candleSmoke) candleSmoke.classList.add('active');
+      if (wishRevealBox) wishRevealBox.classList.add('active');
+      if (candleStatusText) candleStatusText.textContent = "🌟 Wish Sent to the Stars! 🌟";
+      if (typeof createConfettiBurst === 'function') {
+        createConfettiBurst(120);
+      }
+    }
+  }
+
+  if (candleBtn) candleBtn.addEventListener('click', blowOutCandle);
+  if (btnBlowCandle) btnBlowCandle.addEventListener('click', blowOutCandle);
+
   const galleryItems = document.querySelectorAll('.gallery-item');
   const lightboxModal = document.getElementById('lightbox-modal');
   const lightboxImg = document.getElementById('lightbox-img');
