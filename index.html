@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday, Franka! 🎂 | October 1st</title>
+  <meta name="description" content="A special birthday website celebrating Franka — memories, friendship, and a beautiful new chapter.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎈</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <canvas id="ambient-canvas"></canvas>
+
+  <header id="navbar">
+    <div class="nav-container">
+      <a href="#hero" class="nav-logo">
+        <span class="logo-initial">F</span>
+        <span class="logo-dot">•</span>
+        <span class="logo-date">10.01</span>
+      </a>
+
+      <nav class="nav-links" id="nav-links">
+        <a href="#hero" class="nav-link active">Home</a>
+        <a href="#gallery" class="nav-link">Memories</a>
+        <a href="#personality" class="nav-link">The Little Things</a>
+        <a href="#letter" class="nav-link">Birthday Letter</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button id="music-toggle" class="btn-music" aria-label="Toggle background music">
+          <span class="music-icon" id="music-icon">♪</span>
+          <span class="music-label" id="music-label">Play</span>
+          <div class="eq-bars" id="eq-bars">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+          </div>
+        </button>
+
+        <button id="menu-toggle" class="btn-menu" aria-label="Toggle navigation menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <audio id="bg-music" loop preload="auto">
+    <source src="assets/birthday-song.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <main>
+    <section id="hero" class="hero-section">
+      <div class="hero-content">
+        <div class="badge-tag fade-in">
+          <span class="sparkle">✨</span> Celebrating October 1st
+        </div>
+
+        <h1 class="hero-title fade-in">
+          Happy Birthday, <br>
+          <span class="gold-gradient script-accent">Franka</span>
+        </h1>
+
+        <p class="hero-quote fade-in">
+          “Some people enter your story unexpectedly. Some become part of it.”
+        </p>
+
+        <div class="countdown-container fade-in" id="countdown-widget">
+          <div class="countdown-title">Countdown to October 1st</div>
+          <div class="countdown-grid">
+            <div class="countdown-item">
+              <span class="count-val" id="count-days">00</span>
+              <span class="count-unit">Days</span>
+            </div>
+            <div class="countdown-colon">:</div>
+            <div class="countdown-item">
+              <span class="count-val" id="count-hours">00</span>
+              <span class="count-unit">Hours</span>
+            </div>
+            <div class="countdown-colon">:</div>
+            <div class="countdown-item">
+              <span class="count-val" id="count-mins">00</span>
+              <span class="count-unit">Mins</span>
+            </div>
+            <div class="countdown-colon">:</div>
+            <div class="countdown-item">
+              <span class="count-val" id="count-secs">00</span>
+              <span class="count-unit">Secs</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-actions fade-in">
+          <a href="#letter" class="btn btn-primary">
+            <span>Open Your Birthday Letter</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <a href="#gallery" class="scroll-indicator" aria-label="Scroll down">
+        <span class="scroll-text">Scroll to explore</span>
+        <div class="mouse-icon">
+          <div class="wheel"></div>
+        </div>
+      </a>
+    </section>
+
+    <section id="gallery" class="section gallery-section">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-subtitle">MEMORIES & MOMENTS</span>
+          <h2 class="section-title">Captured Moments</h2>
+          <p class="section-desc">A visual celebration of smiles, milestones, and memories.</p>
+          <div class="section-divider"></div>
+        </div>
+
+        <div class="gallery-grid" id="gallery-grid">
+          <div class="gallery-item item-large" data-index="0" data-caption="University Days & Golden Moments">
+            <div class="gallery-card">
+              <img src="assets/IMG-20260331-WA0065.jpg" alt="Franka photo 1" loading="lazy">
+              <div class="gallery-overlay">
+                <span class="gallery-icon">🔍</span>
+                <span class="gallery-caption">University Days & Golden Moments</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="gallery-item" data-index="1" data-caption="Warm Conversations & Radiance">
+            <div class="gallery-card">
+              <img src="assets/IMG-20260331-WA0066.jpg" alt="Franka photo 2" loading="lazy">
+              <div class="gallery-overlay">
+                <span class="gallery-icon">🔍</span>
+                <span class="gallery-caption">Warm Conversations & Radiance</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="gallery-item" data-index="2" data-caption="Unforgettable Smiles & Quiet Joy">
+            <div class="gallery-card">
+              <img src="assets/IMG-20260331-WA0067.jpg" alt="Franka photo 3" loading="lazy">
+              <div class="gallery-overlay">
+                <span class="gallery-icon">🔍</span>
+                <span class="gallery-caption">Unforgettable Smiles & Quiet Joy</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="gallery-item" data-index="3" data-caption="A Presence That Brightens Any Room">
+            <div class="gallery-card">
+              <img src="assets/IMG-20260331-WA0072.jpg" alt="Franka photo 4" loading="lazy">
+              <div class="gallery-overlay">
+                <span class="gallery-icon">🔍</span>
+                <span class="gallery-caption">A Presence That Brightens Any Room</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="gallery-item" data-index="4" data-caption="Cherished Memories Along The Journey">
+            <div class="gallery-card">
+              <img src="assets/IMG-20260331-WA0073.jpg" alt="Franka photo 5" loading="lazy">
+              <div class="gallery-overlay">
+                <span class="gallery-icon">🔍</span>
+                <span class="gallery-caption">Cherished Memories Along The Journey</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="gallery-item" data-index="5" data-caption="Authentic Energy & Grace">
+            <div class="gallery-card">
+              <img src="assets/IMG-20260331-WA0074.jpg" alt="Franka photo 6" loading="lazy">
+              <div class="gallery-overlay">
+                <span class="gallery-icon">🔍</span>
+                <span class="gallery-caption">Authentic Energy & Grace</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="gallery-item item-wide" data-index="6" data-caption="Looking Forward To A Beautiful New Chapter">
+            <div class="gallery-card">
+              <img src="assets/IMG-20260331-WA0077.jpg" alt="Franka photo 7" loading="lazy">
+              <div class="gallery-overlay">
+                <span class="gallery-icon">🔍</span>
+                <span class="gallery-caption">A Beautiful New Chapter Ahead</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="video-memory-container glass-card" style="margin-top: 40px; padding: 30px; text-align: center;">
+          <h3 style="font-family: var(--font-serif); font-size: 1.8rem; color: var(--accent-gold); margin-bottom: 15px;">
+            🎬 A Moment in Motion
+          </h3>
+          <div class="video-wrapper" style="max-width: 600px; margin: 0 auto; border-radius: var(--radius-md); overflow: hidden; border: 1px solid rgba(232,165,184,0.3); box-shadow: var(--shadow-card);">
+            <video controls playsinline preload="metadata" style="width: 100%; display: block; border-radius: var(--radius-md);">
+              <source src="assets/VID-20260415-WA0007.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <p style="color: var(--text-muted); font-size: 0.95rem; margin-top: 15px; font-style: italic;">
+            "Capturing the laughter, energy, and genuine spirit of Franka."
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <div id="lightbox-modal" class="lightbox-modal" aria-hidden="true" role="dialog">
+      <div class="lightbox-content">
+        <button class="lightbox-close" id="lightbox-close" aria-label="Close lightbox">&times;</button>
+        <button class="lightbox-prev" id="lightbox-prev" aria-label="Previous image">&#10094;</button>
+        <button class="lightbox-next" id="lightbox-next" aria-label="Next image">&#10095;</button>
+        
+        <div class="lightbox-image-container">
+          <img id="lightbox-img" src="" alt="Full view picture">
+        </div>
+        
+        <div class="lightbox-footer">
+          <p id="lightbox-caption" class="lightbox-caption-text"></p>
+          <span id="lightbox-counter" class="lightbox-counter-text">1 / 7</span>
+        </div>
+      </div>
+    </div>
+
+    <section id="personality" class="section personality-section">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-subtitle">CELEBRATING YOU</span>
+          <h2 class="section-title">The Little Things That Make You, You</h2>
+          <div class="section-divider"></div>
+        </div>
+
+        <div class="personality-grid">
+          <div class="personality-card glass-card tilt-effect">
+            <div class="card-icon">✨</div>
+            <h3>Your Smile</h3>
+            <p>The kind of genuine warmth that effortlessly lights up a room and puts everyone around you at ease.</p>
+          </div>
+
+          <div class="personality-card glass-card tilt-effect">
+            <div class="card-icon">⚡</div>
+            <h3>Your Energy</h3>
+            <p>Vibrant, authentic, and naturally uplifting whenever you step into any space or conversation.</p>
+          </div>
+
+          <div class="personality-card glass-card tilt-effect">
+            <div class="card-icon">🌿</div>
+            <h3>The Little Moments</h3>
+            <p>The shared jokes, casual catch-ups, spontaneous laughter, and everyday memories that stick around.</p>
+          </div>
+
+          <div class="personality-card glass-card tilt-effect">
+            <div class="card-icon">💬</div>
+            <h3>The Conversations</h3>
+            <p>Meaningful, open, and grounded — moments where listening and understanding came naturally.</p>
+          </div>
+
+          <div class="personality-card glass-card tilt-effect highlight-card">
+            <div class="card-icon">🎁</div>
+            <h3>The Memories</h3>
+            <p>A collection of steps, milestones, and chapters that make university life richer and unforgettable.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="letter" class="section letter-section">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-subtitle">FROM THE HEART</span>
+          <h2 class="section-title">A Little Birthday Note</h2>
+          <div class="section-divider"></div>
+        </div>
+
+        <div class="letter-wrapper">
+          <div class="letter-card glow-card">
+            <div class="letter-header">
+              <div class="wax-seal">
+                <span class="wax-symbol">F</span>
+              </div>
+              <div class="letter-date">October 1st</div>
+            </div>
+
+            <div class="letter-body">
+              <p class="letter-salutation">Happy Birthday, Franka ❤️</p>
+
+              <p class="letter-paragraph">
+                It’s funny how some people become part of your story in ways you never really planned.
+              </p>
+
+              <p class="letter-paragraph">
+                I still remember the first time I saw you during our freshers’ orientation. A lot has happened since then. From being strangers, to discovering that we both once had feelings for each other, to eventually becoming genuinely close friends. We have had conversations, shared memories, laughed together, and gotten to know each other in ways we probably never expected that first day.
+              </p>
+
+              <p class="letter-paragraph">
+                Life and people change, and sometimes relationships between people take different directions. But regardless of where life takes us, I’m grateful that I got the chance to know you and have you as a friend.
+              </p>
+
+              <p class="letter-paragraph">
+                On your birthday, I just want you to know that I genuinely wish you well. I hope this new chapter brings you peace, happiness, growth, good health, and opportunities that make you proud of yourself.
+              </p>
+
+              <p class="letter-paragraph letter-emph">
+                Keep being yourself. Keep growing. Keep chasing the things that matter to you.
+              </p>
+
+              <p class="letter-paragraph letter-closing">
+                Happy Birthday once again, Franka. 🎂❤️
+              </p>
+
+              <p class="letter-footer-note">
+                May October 1st mark the beginning of a beautiful year for you.
+              </p>
+            </div>
+
+            <div class="letter-actions">
+              <button id="btn-copy-letter" class="btn btn-outline btn-sm">
+                <span>📋 Copy Letter</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section feature-photo-section">
+      <div class="container">
+        <div class="feature-photo-card glass-card">
+          <div class="feature-photo-img-wrapper">
+            <img src="assets/IMG-20260331-WA0077.jpg" alt="Franka birthday tribute portrait" loading="lazy">
+          </div>
+          <div class="feature-photo-content">
+            <span class="feature-quote-symbol">“</span>
+            <p class="feature-main-text">
+              Here’s to another year of becoming everything you are meant to be.
+            </p>
+            <h3 class="feature-sub-text gold-gradient">
+              Happy Birthday, Franka ❤️
+            </h3>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="celebration" class="celebration-section">
+      <canvas id="confetti-canvas"></canvas>
+
+      <div class="celebration-content text-center">
+        <div class="celebration-badge pulse-anim">🎂 OCTOBER 1ST 🎂</div>
+        
+        <h2 class="celebration-title">
+          Happy Birthday, Franka 🎂
+        </h2>
+
+        <p class="celebration-subtitle">
+          May this new chapter be kind to you.
+        </p>
+
+        <div class="celebration-date-tag">
+          October 1, 2026
+        </div>
+
+        <div class="celebration-actions">
+          <button id="btn-trigger-confetti" class="btn btn-gold btn-lg">
+            <span>🎉 Trigger Confetti & Fireworks!</span>
+          </button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container text-center">
+      <p class="footer-text">
+        Crafted with appreciation for Franka's Birthday • October 1, 2026
+      </p>
+      <p class="footer-subtext">Wishing you a year filled with joy, peace, and success.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
