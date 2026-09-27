@@ -317,8 +317,8 @@ document.addEventListener('DOMContentLoaded', () => {
     btnCopyLetter.addEventListener('click', () => {
       const letterText = `Happy Birthday, Franka ❤️\n\n` +
         `It’s funny how some people become part of your story in ways you never really planned.\n\n` +
-        `I still remember the first time I saw you during our freshers’ orientation. A lot has happened since then. From being strangers, to discovering that we both once had feelings for each other, to eventually becoming genuinely close friends. We have had conversations, shared memories, laughed together, and gotten to know each other in ways we probably never expected that first day.\n\n` +
-        `Life and people change, and sometimes relationships between people take different directions. But regardless of where life takes us, I’m grateful that I got the chance to know you and have you as a friend.\n\n` +
+        `I still remember the first time I saw you during our freshers’ orientation. A lot has happened since then. From being strangers to eventually becoming genuinely close friends, we have shared conversations, laughed together, created memories, and gotten to know each other in ways I never expected that first day.\n\n` +
+        `Life changes, people grow, and sometimes the journey takes unexpected turns. But regardless of where life takes us, I’m grateful that I got the chance to know you and have you as a friend.\n\n` +
         `On your birthday, I just want you to know that I genuinely wish you well. I hope this new chapter brings you peace, happiness, growth, good health, and opportunities that make you proud of yourself.\n\n` +
         `Keep being yourself. Keep growing. Keep chasing the things that matter to you.\n\n` +
         `Happy Birthday once again, Franka. 🎂❤️\n\n` +
